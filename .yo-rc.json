@@ -1,0 +1,50 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.springernature.sndeals",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "sndeals",
+    "packageName": "com.springernature.sndeals",
+    "packageFolder": "com/springernature/sndeals",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "postgresql",
+    "messageBroker": false,
+    "buildTool": "gradle",
+    "jwtSecretKey": "ZGFlZTBkMmUyMGZiN2UwOGM2ZTRmNWNhMzMzOWEzYjBiZTZkMDBlNTU2ZDg5ZjAwYWI2NGIxMTkzNTY2MDVmODM4MDI0YmFmZDVlNjI5OTk2YzYyMGY3YzM3OTI3NTBjYmE1MmMyZGNkYTRkNjk2OTBkMmI1OWI4YzNjY2Q1NmQ=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "react",
+    "clientTheme": "yeti",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1620309832053,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-micronaut",
+        "version": "1.0.1"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "de", "hi", "mr"],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-micronaut",
+        "version": "1.0.1"
+      }
+    ]
+  }
+}

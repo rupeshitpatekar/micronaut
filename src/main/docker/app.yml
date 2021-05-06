@@ -1,0 +1,15 @@
+version: '2'
+services:
+  sndeals-app:
+    image: sndeals
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - MICRONAUT_ENVIRONMENTS=prod
+      - JDBC_URL=jdbc:postgresql://sndeals-postgresql:5432/sndeals
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+    ports:
+      - 8080:8080
+  sndeals-postgresql:
+    extends:
+      file: postgresql.yml
+      service: sndeals-postgresql
