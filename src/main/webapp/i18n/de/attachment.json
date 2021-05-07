@@ -1,0 +1,24 @@
+{
+  "sndealsApp": {
+    "attachment": {
+      "home": {
+        "title": "Attachments",
+        "createLabel": "Attachment erstellen",
+        "createOrEditLabel": "Attachment erstellen oder bearbeiten",
+        "notFound": "No Attachments found"
+      },
+      "created": "Attachment erstellt mit ID {{ param }}",
+      "updated": "Attachment aktualisiert mit ID {{ param }}",
+      "deleted": "Attachment gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Attachment {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Attachment"
+      },
+      "fileName": "File Name",
+      "content": "Content",
+      "post": "Post"
+    }
+  }
+}

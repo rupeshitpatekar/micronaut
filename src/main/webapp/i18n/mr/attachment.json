@@ -1,0 +1,24 @@
+{
+  "sndealsApp": {
+    "attachment": {
+      "home": {
+        "title": "Attachments",
+        "createLabel": "नवीन Attachment तयार करा",
+        "createOrEditLabel": "Attachment तयार किंवा संपादित करा",
+        "notFound": "No Attachments found"
+      },
+      "created": "Attachment [identifier: {{ param }}] तयार आहे",
+      "updated": "Attachment [identifier: {{ param }}] सुधारित केले आहे",
+      "deleted": "Attachment [identifier: {{ param }}] हटविले आहे",
+      "delete": {
+        "question": "Attachment [id: {{ id }}] काढून टाकण्याबाबत पुष्टी?"
+      },
+      "detail": {
+        "title": "Attachment"
+      },
+      "fileName": "File Name",
+      "content": "Content",
+      "post": "Post"
+    }
+  }
+}

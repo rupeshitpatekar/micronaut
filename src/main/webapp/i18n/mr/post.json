@@ -1,0 +1,26 @@
+{
+  "sndealsApp": {
+    "post": {
+      "home": {
+        "title": "Posts",
+        "createLabel": "नवीन Post तयार करा",
+        "createOrEditLabel": "Post तयार किंवा संपादित करा",
+        "notFound": "No Posts found"
+      },
+      "created": "Post [identifier: {{ param }}] तयार आहे",
+      "updated": "Post [identifier: {{ param }}] सुधारित केले आहे",
+      "deleted": "Post [identifier: {{ param }}] हटविले आहे",
+      "delete": {
+        "question": "Post [id: {{ id }}] काढून टाकण्याबाबत पुष्टी?"
+      },
+      "detail": {
+        "title": "Post"
+      },
+      "title": "Title",
+      "description": "Description",
+      "location": "Location",
+      "status": "Status",
+      "category": "Category"
+    }
+  }
+}

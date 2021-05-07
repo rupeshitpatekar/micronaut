@@ -13,12 +13,10 @@ plugins {
     id "java"
     id "maven-publish"
     id "idea"
-    id "jacoco"
     id "application"
     id "com.gorylenko.gradle-git-properties"
     id "com.github.node-gradle.node"
     id "org.liquibase.gradle"
-    id "org.sonarqube"
     id "com.github.johnrengelman.shadow"
     //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
@@ -42,7 +40,7 @@ targetCompatibility=1.8
 assert System.properties["java.specification.version"] == "1.8" || "11" || "12" || "13" || "14"
 
 apply from: "gradle/docker.gradle"
-apply from: "gradle/sonar.gradle"
+
 
 //jhipster-needle-gradle-apply-from - JHipster will add additional gradle scripts to be applied here
 
@@ -212,7 +210,7 @@ dependencies {
     // to use a SNAPSHOT release instead of a stable release
     implementation (group: "io.github.jhipster", name: "jhipster-framework") {
         exclude group: "org.springframework", module: "spring-context-support"
-        
+
         exclude group: "org.springframework.boot", module: "spring-boot-autoconfigure"
         exclude group: "org.springframework.boot", module: "spring-boot-starter-aop"
         exclude group: "org.springframework.boot", module: "spring-boot-starter-web"
@@ -277,7 +275,9 @@ dependencies {
 
 
 
-
+    implementation "io.micronaut.spring:micronaut-spring"
+    implementation "io.micronaut.data:micronaut-data-spring:$micronaut_data_version"
+    implementation "io.micronaut.data:micronaut-data-spring-jpa:$micronaut_data_version"
 
 
     implementation ("io.springfox:springfox-swagger2") {

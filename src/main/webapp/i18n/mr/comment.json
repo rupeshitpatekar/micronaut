@@ -1,0 +1,23 @@
+{
+  "sndealsApp": {
+    "comment": {
+      "home": {
+        "title": "Comments",
+        "createLabel": "नवीन Comment तयार करा",
+        "createOrEditLabel": "Comment तयार किंवा संपादित करा",
+        "notFound": "No Comments found"
+      },
+      "created": "Comment [identifier: {{ param }}] तयार आहे",
+      "updated": "Comment [identifier: {{ param }}] सुधारित केले आहे",
+      "deleted": "Comment [identifier: {{ param }}] हटविले आहे",
+      "delete": {
+        "question": "Comment [id: {{ id }}] काढून टाकण्याबाबत पुष्टी?"
+      },
+      "detail": {
+        "title": "Comment"
+      },
+      "comment": "Comment",
+      "post": "Post"
+    }
+  }
+}
