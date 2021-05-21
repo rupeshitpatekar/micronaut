@@ -1,5 +1,7 @@
 package com.springernature.sndeals.web.rest;
 
+import com.springernature.sndeals.security.AuthoritiesConstants;
+import com.springernature.sndeals.security.SecurityUtils;
 import com.springernature.sndeals.service.PostService;
 import com.springernature.sndeals.web.rest.errors.BadRequestAlertException;
 import com.springernature.sndeals.service.dto.PostDTO;
@@ -8,6 +10,7 @@ import com.springernature.sndeals.service.PostQueryService;
 
 import com.springernature.sndeals.util.HeaderUtil;
 import com.springernature.sndeals.util.PaginationUtil;
+import io.github.jhipster.service.filter.StringFilter;
 import io.micronaut.context.annotation.Value;
 import io.micronaut.core.annotation.Nullable;
 import io.micronaut.http.HttpRequest;
@@ -105,8 +108,15 @@ public class PostResource {
      */
     @Get("/posts")
     @ExecuteOn(TaskExecutors.IO)
-    public HttpResponse<List<PostDTO>> getAllPosts(HttpRequest request, PostCriteria criteria, Pageable pageable) {
+    public HttpResponse<List<PostDTO>> getAllPosts(HttpRequest request, @Nullable PostCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Posts by criteria: {}", criteria);
+        if(!SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)){
+            SecurityUtils.getCurrentUserLogin().ifPresent(login -> {
+                StringFilter createdBy = new StringFilter();
+                createdBy.setEquals(login);
+                criteria.setCreatedBy(createdBy);
+            });
+        }
         Page<PostDTO> page = postQueryService.findByCriteria(criteria, pageable);
         return HttpResponse.ok(page.getContent()).headers(headers ->
             PaginationUtil.generatePaginationHttpHeaders(headers, UriBuilder.of(request.getPath()), page));

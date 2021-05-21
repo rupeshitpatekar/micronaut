@@ -13,21 +13,25 @@ import password, { PasswordState } from 'app/modules/account/password/password.r
 import settings, { SettingsState } from 'app/modules/account/settings/settings.reducer';
 import passwordReset, { PasswordResetState } from 'app/modules/account/password-reset/password-reset.reducer';
 // prettier-ignore
-import category, {
-  CategoryState
-} from 'app/entities/category/category.reducer';
+import post, {
+  PostState
+} from 'app/entities/post/post.reducer';
 // prettier-ignore
 import comment, {
   CommentState
 } from 'app/entities/comment/comment.reducer';
 // prettier-ignore
-import post, {
-  PostState
-} from 'app/entities/post/post.reducer';
+import category, {
+  CategoryState
+} from 'app/entities/category/category.reducer';
 // prettier-ignore
 import attachment, {
   AttachmentState
 } from 'app/entities/attachment/attachment.reducer';
+// prettier-ignore
+import resource, {
+  ResourceState
+} from 'app/entities/resource/resource.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -41,9 +45,10 @@ export interface IRootState {
   readonly passwordReset: PasswordResetState;
   readonly password: PasswordState;
   readonly settings: SettingsState;
-  readonly category: CategoryState;
-  readonly comment: CommentState;
   readonly post: PostState;
+  readonly comment: CommentState;
+  readonly category: CategoryState;
+  readonly resource: ResourceState;
   readonly attachment: AttachmentState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
@@ -60,9 +65,10 @@ const rootReducer = combineReducers<IRootState>({
   passwordReset,
   password,
   settings,
-  category,
-  comment,
   post,
+  comment,
+  category,
+  resource,
   attachment,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,

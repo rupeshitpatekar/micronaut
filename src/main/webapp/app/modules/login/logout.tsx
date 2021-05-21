@@ -14,7 +14,10 @@ export const Logout = (props: ILogoutProps) => {
     props.logout();
     const logoutUrl = props.logoutUrl;
     if (logoutUrl) {
-      window.location.href = logoutUrl;
+      // if Keycloak, logoutUrl has protocol/openid-connect in it
+      window.location.href = logoutUrl.includes('/protocol')
+        ? logoutUrl + '?redirect_uri=' + window.location.origin
+        : logoutUrl + '?id_token_hint=' + props.idToken + '&post_logout_redirect_uri=' + window.location.origin;
     }
   });
 

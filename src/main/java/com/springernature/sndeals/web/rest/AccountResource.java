@@ -8,6 +8,7 @@ import com.springernature.sndeals.service.MailService;
 import com.springernature.sndeals.service.UserService;
 import com.springernature.sndeals.service.dto.PasswordChangeDTO;
 import com.springernature.sndeals.service.dto.UserDTO;
+import com.springernature.sndeals.service.util.EmailDomainValidation;
 import com.springernature.sndeals.web.rest.errors.*;
 import com.springernature.sndeals.web.rest.vm.KeyAndPasswordVM;
 import com.springernature.sndeals.web.rest.vm.ManagedUserVM;
@@ -70,6 +71,11 @@ public class AccountResource {
         if (!checkPasswordLength(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
+
+        if (!EmailDomainValidation.isValidEmailDomain(managedUserVM.getEmail())) {
+            throw new InvalidEmailDomainException();
+        }
+
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
         mailService.sendActivationEmail(user);
     }

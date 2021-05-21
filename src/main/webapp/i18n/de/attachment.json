@@ -1,6 +1,6 @@
 {
   "sndealsApp": {
-    "attachment": {
+    "resource": {
       "home": {
         "title": "Attachments",
         "createLabel": "Attachment erstellen",

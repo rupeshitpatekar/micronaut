@@ -105,7 +105,7 @@ public class CommentResource {
      */
     @Get("/comments")
     @ExecuteOn(TaskExecutors.IO)
-    public HttpResponse<List<CommentDTO>> getAllComments(HttpRequest request, CommentCriteria criteria, Pageable pageable) {
+    public HttpResponse<List<CommentDTO>> getAllComments(HttpRequest request, @Nullable CommentCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Comments by criteria: {}", criteria);
         Page<CommentDTO> page = commentQueryService.findByCriteria(criteria, pageable);
         return HttpResponse.ok(page.getContent()).headers(headers ->

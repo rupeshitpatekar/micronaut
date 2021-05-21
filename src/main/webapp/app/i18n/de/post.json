@@ -1,0 +1,26 @@
+{
+  "sndealsApp": {
+    "post": {
+      "home": {
+        "title": "Posts",
+        "createLabel": "Post erstellen",
+        "createOrEditLabel": "Post erstellen oder bearbeiten",
+        "notFound": "No Posts found"
+      },
+      "created": "Post erstellt mit ID {{ param }}",
+      "updated": "Post aktualisiert mit ID {{ param }}",
+      "deleted": "Post gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Post {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Post"
+      },
+      "title": "Title",
+      "description": "Description",
+      "location": "Location",
+      "status": "Status",
+      "category": "Category"
+    }
+  }
+}

@@ -39,7 +39,7 @@ public class UserJWTControllerIT {
     public void testAuthorize() throws Exception {
         User user = new User();
         user.setLogin("user-jwt-controller");
-        user.setEmail("user-jwt-controller@example.com");
+        user.setEmail("user-jwt-controller@springernature.com");
         user.setActivated(true);
         user.setPassword(passwordEncoder.encode("test"));
 

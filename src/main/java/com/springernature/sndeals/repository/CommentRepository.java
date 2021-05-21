@@ -6,7 +6,7 @@ import com.springernature.sndeals.domain.Comment;
 import io.micronaut.data.annotation.Query;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.jpa.repository.JpaRepository;
-
+import io.micronaut.transaction.annotation.TransactionalAdvice;
 
 
 /**
@@ -14,6 +14,7 @@ import io.micronaut.data.jpa.repository.JpaRepository;
  */
 @SuppressWarnings("unused")
 @Repository
+@TransactionalAdvice
 public interface CommentRepository extends JpaRepository<Comment, Long>{
 
 }

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { locales, languages } from 'app/config/translation';
 import { getUser, getRoles, updateUser, createUser, reset } from './user-management.reducer';
 import { IRootState } from 'app/shared/reducers';
+import {validateEmailDomain} from "app/shared/util/email-domain-validation";
 
 export interface IUserManagementUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ login: string }> {}
 
@@ -152,6 +153,7 @@ export const UserManagementUpdate = (props: IUserManagementUpdateProps) => {
                       value: 254,
                       errorMessage: translate('global.messages.validate.email.maxlength'),
                     },
+                    custom: validateEmailDomain
                   }}
                   value={user.email}
                 />

@@ -17,7 +17,7 @@ export const Home = (props: IHomeProp) => {
     <Row>
       <Col md="9">
         <h2>
-          <Translate contentKey="home.title">Welcome, Micronaut Hipster Official Blueprint!</Translate>
+          <Translate contentKey="home.title">Welcome, Java Hipster!</Translate>
         </h2>
         <p className="lead">
           <Translate contentKey="home.subtitle">This is your homepage</Translate>
@@ -53,7 +53,7 @@ export const Home = (props: IHomeProp) => {
           </div>
         )}
         <p>
-          <Translate contentKey="home.question">If you have any question on JHipster or MHipster:</Translate>
+          <Translate contentKey="home.question">If you have any question on JHipster:</Translate>
         </p>
 
         <ul>
@@ -68,25 +68,25 @@ export const Home = (props: IHomeProp) => {
             </a>
           </li>
           <li>
-            <a href="https://github.com/jhipster/generator-jhipster-micronaut/issues?state=open" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.bugtracker">MHipster bug tracker</Translate>
+            <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
+              <Translate contentKey="home.link.bugtracker">JHipster bug tracker</Translate>
             </a>
           </li>
           <li>
-            <a href="https://gitter.im/jhipster/generator-jhipster-micronaut" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.chat">MHipster public chat room</Translate>
+            <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
+              <Translate contentKey="home.link.chat">JHipster public chat room</Translate>
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/java_hipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.follow">follow @java_hipster on Twitter</Translate>
+            <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">
+              <Translate contentKey="home.link.follow">follow @jhipster on Twitter</Translate>
             </a>
           </li>
         </ul>
 
         <p>
-          <Translate contentKey="home.like">If you like MHipster, do not forget to give us a star on</Translate>{' '}
-          <a href="https://github.com/jhipster/generator-jhipster-micronaut" target="_blank" rel="noopener noreferrer">
+          <Translate contentKey="home.like">If you like JHipster, do not forget to give us a star on</Translate>{' '}
+          <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
             Github
           </a>
           !

@@ -1,0 +1,24 @@
+{
+  "sndealsApp": {
+    "resource": {
+      "home": {
+        "title": "Resources",
+        "createLabel": "Resource erstellen",
+        "createOrEditLabel": "Resource erstellen oder bearbeiten",
+        "notFound": "No Resources found"
+      },
+      "created": "Resource erstellt mit ID {{ param }}",
+      "updated": "Resource aktualisiert mit ID {{ param }}",
+      "deleted": "Resource gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Resource {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Resource"
+      },
+      "fileName": "File Name",
+      "content": "Content",
+      "post": "Post"
+    }
+  }
+}

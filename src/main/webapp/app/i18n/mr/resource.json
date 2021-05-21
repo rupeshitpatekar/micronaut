@@ -1,0 +1,24 @@
+{
+  "sndealsApp": {
+    "resource": {
+      "home": {
+        "title": "Resources",
+        "createLabel": "नवीन Resource तयार करा",
+        "createOrEditLabel": "Resource तयार किंवा संपादित करा",
+        "notFound": "No Resources found"
+      },
+      "created": "Resource [identifier: {{ param }}] तयार आहे",
+      "updated": "Resource [identifier: {{ param }}] सुधारित केले आहे",
+      "deleted": "Resource [identifier: {{ param }}] हटविले आहे",
+      "delete": {
+        "question": "Resource [id: {{ id }}] काढून टाकण्याबाबत पुष्टी?"
+      },
+      "detail": {
+        "title": "Resource"
+      },
+      "fileName": "File Name",
+      "content": "Content",
+      "post": "Post"
+    }
+  }
+}

@@ -7,10 +7,12 @@ import com.springernature.sndeals.security.AuthoritiesConstants;
 import com.springernature.sndeals.service.MailService;
 import com.springernature.sndeals.service.UserService;
 import com.springernature.sndeals.service.dto.UserDTO;
+import com.springernature.sndeals.service.util.EmailDomainValidation;
 import com.springernature.sndeals.util.HeaderUtil;
 import com.springernature.sndeals.util.PaginationUtil;
 import com.springernature.sndeals.web.rest.errors.BadRequestAlertException;
 import com.springernature.sndeals.web.rest.errors.EmailAlreadyUsedException;
+import com.springernature.sndeals.web.rest.errors.InvalidEmailDomainException;
 import com.springernature.sndeals.web.rest.errors.LoginAlreadyUsedException;
 
 import io.micronaut.context.annotation.Value;
@@ -93,7 +95,9 @@ public class UserResource {
     public HttpResponse<User> createUser(@Valid @Body UserDTO userDTO) throws URISyntaxException {
         log.debug("REST request to save User : {}", userDTO);
 
-        if (userDTO.getId() != null) {
+        if (!EmailDomainValidation.isValidEmailDomain(userDTO.getEmail())) {
+            throw new InvalidEmailDomainException();
+        }else if (userDTO.getId() != null) {
             throw new BadRequestAlertException("A new user cannot already have an ID", "userManagement", "idexists");
             // Lowercase the user login before comparing with database
         } else if (userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).isPresent()) {
@@ -126,6 +130,9 @@ public class UserResource {
     @ExecuteOn(TaskExecutors.IO)
     public HttpResponse<UserDTO> updateUser(@Valid @Body UserDTO userDTO) {
         log.debug("REST request to update User : {}", userDTO);
+        if (!EmailDomainValidation.isValidEmailDomain(userDTO.getEmail())) {
+            throw new InvalidEmailDomainException();
+        }
         Optional<User> existingUser = userRepository.findOneByEmailIgnoreCase(userDTO.getEmail());
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(userDTO.getId()))) {
             throw new EmailAlreadyUsedException();

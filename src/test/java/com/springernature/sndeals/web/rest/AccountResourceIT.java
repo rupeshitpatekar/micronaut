@@ -89,7 +89,7 @@ public class AccountResourceIT {
         user.setLogin("test");
         user.setFirstName("john");
         user.setLastName("doe");
-        user.setEmail("john.doe@jhipster.com");
+        user.setEmail("john.doespringernature.com");
         user.setImageUrl("http://placehold.it/50x50");
         user.setLangKey("en");
         user.setAuthorities(authorities);
@@ -100,7 +100,7 @@ public class AccountResourceIT {
         assertThat(userDTO.getLogin()).isEqualTo("test");
         assertThat(userDTO.getFirstName()).isEqualTo("john");
         assertThat(userDTO.getLastName()).isEqualTo("doe");
-        assertThat(userDTO.getEmail()).isEqualTo("john.doe@jhipster.com");
+        assertThat(userDTO.getEmail()).isEqualTo("john.doespringernature.com");
         assertThat(userDTO.getImageUrl()).isEqualTo("http://placehold.it/50x50");
         assertThat(userDTO.getAuthorities().toString()).isEqualTo("[ROLE_ADMIN]");
     }
@@ -123,7 +123,7 @@ public class AccountResourceIT {
         validUser.setPassword("password");
         validUser.setFirstName("Alice");
         validUser.setLastName("Test");
-        validUser.setEmail("test-register-valid@example.com");
+        validUser.setEmail("test-register-valid@springernature.com");
         validUser.setImageUrl("http://placehold.it/50x50");
         validUser.setLangKey(Constants.DEFAULT_LANGUAGE);
         validUser.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
@@ -142,7 +142,7 @@ public class AccountResourceIT {
         invalidUser.setPassword("password");
         invalidUser.setFirstName("Funky");
         invalidUser.setLastName("One");
-        invalidUser.setEmail("funky@example.com");
+        invalidUser.setEmail("funky@springernature.com");
         invalidUser.setActivated(true);
         invalidUser.setImageUrl("http://placehold.it/50x50");
         invalidUser.setLangKey(Constants.DEFAULT_LANGUAGE);
@@ -153,7 +153,7 @@ public class AccountResourceIT {
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.BAD_REQUEST.getCode());
 
-        Optional<User> user = userRepository.findOneByEmailIgnoreCase("funky@example.com");
+        Optional<User> user = userRepository.findOneByEmailIgnoreCase("funky@springernature.com");
         assertThat(user.isPresent()).isFalse();
     }
 
@@ -188,7 +188,7 @@ public class AccountResourceIT {
         invalidUser.setPassword("123");// password with only 3 digits
         invalidUser.setFirstName("Bob");
         invalidUser.setLastName("Green");
-        invalidUser.setEmail("bob@example.com");
+        invalidUser.setEmail("bob@springernature.com");
         invalidUser.setActivated(true);
         invalidUser.setImageUrl("http://placehold.it/50x50");
         invalidUser.setLangKey(Constants.DEFAULT_LANGUAGE);
@@ -211,7 +211,7 @@ public class AccountResourceIT {
         invalidUser.setPassword(null);// invalid null password
         invalidUser.setFirstName("Bob");
         invalidUser.setLastName("Green");
-        invalidUser.setEmail("bob@example.com");
+        invalidUser.setEmail("bob@springernature.com");
         invalidUser.setActivated(true);
         invalidUser.setImageUrl("http://placehold.it/50x50");
         invalidUser.setLangKey(Constants.DEFAULT_LANGUAGE);
@@ -232,7 +232,7 @@ public class AccountResourceIT {
         when(userService.getCurrentUserLogin()).thenReturn(Optional.of("save-account"));
         User user = new User();
         user.setLogin("save-account");
-        user.setEmail("save-account@example.com");
+        user.setEmail("save-account@springernature.com");
         user.setPassword(RandomStringUtils.random(60));
         user.setActivated(true);
 
@@ -242,7 +242,7 @@ public class AccountResourceIT {
         userDTO.setLogin("not-used");
         userDTO.setFirstName("firstname");
         userDTO.setLastName("lastname");
-        userDTO.setEmail("save-account@example.com");
+        userDTO.setEmail("save-account@springernature.com");
         userDTO.setActivated(false);
         userDTO.setImageUrl("http://placehold.it/50x50");
         userDTO.setLangKey(Constants.DEFAULT_LANGUAGE);
@@ -254,7 +254,7 @@ public class AccountResourceIT {
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.OK.getCode());
 
         verify(userService, times(1)).updateUser("firstname", "lastname",
-            "save-account@example.com", "en", "http://placehold.it/50x50");
+            "save-account@springernature.com", "en", "http://placehold.it/50x50");
     }
 
     @Test
@@ -262,7 +262,7 @@ public class AccountResourceIT {
         when(userService.getCurrentUserLogin()).thenReturn(Optional.of("save-invalid-email"));
         User user = new User();
         user.setLogin("save-invalid-email");
-        user.setEmail("save-invalid-email@example.com");
+        user.setEmail("save-invalid-email@springernature.com");
         user.setPassword(RandomStringUtils.random(60));
         user.setActivated(true);
 
@@ -291,7 +291,7 @@ public class AccountResourceIT {
         when(userService.getCurrentUserLogin()).thenReturn(Optional.of("save-existing-email"));
         User user = new User();
         user.setLogin("save-existing-email");
-        user.setEmail("save-existing-email@example.com");
+        user.setEmail("save-existing-email@springernature.com");
         user.setPassword(RandomStringUtils.random(60));
         user.setActivated(true);
 
@@ -299,7 +299,7 @@ public class AccountResourceIT {
 
         User anotherUser = new User();
         anotherUser.setLogin("save-existing-email2");
-        anotherUser.setEmail("save-existing-email2@example.com");
+        anotherUser.setEmail("save-existing-email2@springernature.com");
         anotherUser.setPassword(RandomStringUtils.random(60));
         anotherUser.setActivated(true);
 
@@ -309,7 +309,7 @@ public class AccountResourceIT {
         userDTO.setLogin("not-used");
         userDTO.setFirstName("firstname");
         userDTO.setLastName("lastname");
-        userDTO.setEmail("save-existing-email2@example.com");
+        userDTO.setEmail("save-existing-email2@springernature.com");
         userDTO.setActivated(false);
         userDTO.setImageUrl("http://placehold.it/50x50");
         userDTO.setLangKey(Constants.DEFAULT_LANGUAGE);
@@ -321,7 +321,7 @@ public class AccountResourceIT {
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.BAD_REQUEST.getCode());
 
         User updatedUser = userRepository.findOneByLogin("save-existing-email").orElse(null);
-        assertThat(updatedUser.getEmail()).isEqualTo("save-existing-email@example.com");
+        assertThat(updatedUser.getEmail()).isEqualTo("save-existing-email@springernature.com");
     }
 
 
@@ -330,7 +330,7 @@ public class AccountResourceIT {
         when(userService.getCurrentUserLogin()).thenReturn(Optional.of("save-existing-email-and-login"));
         User user = new User();
         user.setLogin("save-existing-email-and-login");
-        user.setEmail("save-existing-email-and-login@example.com");
+        user.setEmail("save-existing-email-and-login@springernature.com");
         user.setPassword(RandomStringUtils.random(60));
         user.setActivated(true);
 
@@ -340,7 +340,7 @@ public class AccountResourceIT {
         userDTO.setLogin("not-used");
         userDTO.setFirstName("firstname");
         userDTO.setLastName("lastname");
-        userDTO.setEmail("save-existing-email-and-login@example.com");
+        userDTO.setEmail("save-existing-email-and-login@springernature.com");
         userDTO.setActivated(false);
         userDTO.setImageUrl("http://placehold.it/50x50");
         userDTO.setLangKey(Constants.DEFAULT_LANGUAGE);
@@ -352,9 +352,9 @@ public class AccountResourceIT {
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.OK.getCode());
 
         verify(userService, times(1)).updateUser("firstname", "lastname",
-            "save-existing-email-and-login@example.com", "en", "http://placehold.it/50x50");
+            "save-existing-email-and-login@springernature.com", "en", "http://placehold.it/50x50");
         User updatedUser = userRepository.findOneByLogin("save-existing-email-and-login").orElse(null);
-        assertThat(updatedUser.getEmail()).isEqualTo("save-existing-email-and-login@example.com");
+        assertThat(updatedUser.getEmail()).isEqualTo("save-existing-email-and-login@springernature.com");
     }
 
 
@@ -364,7 +364,7 @@ public class AccountResourceIT {
         String currentPassword = RandomStringUtils.random(60);
         user.setPassword(passwordEncoder.encode(currentPassword));
         user.setLogin("change-password-wrong-existing-password");
-        user.setEmail("change-password-wrong-existing-password@example.com");
+        user.setEmail("change-password-wrong-existing-password@springernature.com");
         userRepository.saveAndFlush(user);
 
         HttpResponse<String> response = client.exchange(HttpRequest.POST("/api/account/change-password", new PasswordChangeDTO("1"+currentPassword, "new password")), String.class).
@@ -381,7 +381,7 @@ public class AccountResourceIT {
         String currentPassword = RandomStringUtils.random(60);
         user.setPassword(passwordEncoder.encode(currentPassword));
         user.setLogin("change-password");
-        user.setEmail("change-password@example.com");
+        user.setEmail("change-password@springernature.com");
         userRepository.saveAndFlush(user);
 
         HttpResponse<String> response = client.exchange(HttpRequest.POST("/api/account/change-password", new PasswordChangeDTO(currentPassword, "new password")), String.class).
@@ -398,11 +398,11 @@ public class AccountResourceIT {
         user.setPassword(RandomStringUtils.random(60));
         user.setActivated(true);
         user.setLogin("password-reset");
-        user.setEmail("password-reset@example.com");
+        user.setEmail("password-reset@springernature.com");
         userRepository.saveAndFlush(user);
         when(userService.requestPasswordReset(anyString())).thenReturn(Optional.of(user));
 
-        HttpResponse<String> response = client.exchange(HttpRequest.POST("/api/account/reset-password/init", "{\"mail\":\"password-reset@example.com\"}"), Argument.of(String.class)).
+        HttpResponse<String> response = client.exchange(HttpRequest.POST("/api/account/reset-password/init", "{\"mail\":\"password-reset@springernature.com\"}"), Argument.of(String.class)).
             onErrorReturn(t -> (HttpResponse<String>) ((HttpClientResponseException) t).getResponse()).blockingFirst();
 
         assertThat(response.status().getCode()).isEqualTo(HttpStatus.OK.getCode());

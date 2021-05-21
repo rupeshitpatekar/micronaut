@@ -7,6 +7,7 @@ import io.micronaut.data.jpa.annotation.EntityGraph;
 import io.micronaut.data.jpa.repository.JpaRepository;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
+import io.micronaut.transaction.annotation.TransactionalAdvice;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,16 +17,17 @@ import java.time.Instant;
  * Micronaut Data JPA repository for the {@link User} entity.
  */
 @Repository
+@TransactionalAdvice
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    
+
 
     public Optional<User> findOneByActivationKey(String activationKey);
 
     public List<User> findAllByActivatedFalseAndCreatedDateBefore(Instant dateTime);
 
     public Optional<User> findOneByResetKey(String resetKey);
-    
+
 
     public Optional<User> findOneByEmailIgnoreCase(String email);
 

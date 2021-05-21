@@ -14,12 +14,12 @@ import { IAttachment } from 'app/shared/model/attachment.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
-export interface IAttachmentUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface IAttachmentUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string, postIdParam: string }> {}
 
 export const AttachmentUpdate = (props: IAttachmentUpdateProps) => {
-  const [postId, setPostId] = useState('0');
+  const [postId, setPostId] = useState(props.match.params.postIdParam);
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
-
+  const [fileName, setFileName] = useState(null);
   const { attachmentEntity, posts, loading, updating } = props;
 
   const { content, contentContentType } = attachmentEntity;
@@ -39,10 +39,14 @@ export const AttachmentUpdate = (props: IAttachmentUpdateProps) => {
   }, []);
 
   const onBlobChange = (isAnImage, name) => event => {
-    setFileData(event, (contentType, data) => props.setBlob(name, data, contentType), isAnImage);
+    setFileName(event.target.files[0].name);
+    setFileData(event, (contentType, data) => {
+      props.setBlob(name, data, contentType)
+    }, isAnImage);
   };
 
   const clearBlob = name => () => {
+    setFileName(null);
     props.setBlob(name, undefined, undefined);
   };
 
@@ -55,6 +59,7 @@ export const AttachmentUpdate = (props: IAttachmentUpdateProps) => {
   const saveEntity = (event, errors, values) => {
     if (errors.length === 0) {
       const entity = {
+        fileName,
         ...attachmentEntity,
         ...values,
       };
@@ -81,7 +86,7 @@ export const AttachmentUpdate = (props: IAttachmentUpdateProps) => {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <AvForm model={isNew ? {} : attachmentEntity} onSubmit={saveEntity}>
+            <AvForm model={isNew ? {postId} : attachmentEntity} onSubmit={saveEntity}>
               {!isNew ? (
                 <AvGroup>
                   <Label for="attachment-id">
@@ -90,19 +95,6 @@ export const AttachmentUpdate = (props: IAttachmentUpdateProps) => {
                   <AvInput id="attachment-id" type="text" className="form-control" name="id" required readOnly />
                 </AvGroup>
               ) : null}
-              <AvGroup>
-                <Label id="fileNameLabel" for="attachment-fileName">
-                  <Translate contentKey="sndealsApp.attachment.fileName">File Name</Translate>
-                </Label>
-                <AvField
-                  id="attachment-fileName"
-                  type="text"
-                  name="fileName"
-                  validate={{
-                    required: { value: true, errorMessage: translate('entity.validation.required') },
-                  }}
-                />
-              </AvGroup>
               <AvGroup>
                 <AvGroup>
                   <Label id="contentLabel" for="content">
@@ -144,7 +136,7 @@ export const AttachmentUpdate = (props: IAttachmentUpdateProps) => {
                   {posts
                     ? posts.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
+                          {otherEntity.title}
                         </option>
                       ))
                     : null}

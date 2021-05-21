@@ -33,6 +33,8 @@ public class PostCriteria implements Serializable, Criteria {
 
     private LongFilter categoryId;
 
+    private StringFilter createdBy;
+
     public PostCriteria() {
     }
 
@@ -43,6 +45,7 @@ public class PostCriteria implements Serializable, Criteria {
         this.location = other.location == null ? null : other.location.copy();
         this.status = other.status == null ? null : other.status.copy();
         this.categoryId = other.categoryId == null ? null : other.categoryId.copy();
+        this.createdBy = other.createdBy == null ? null : other.createdBy.copy();
     }
 
     @Override
@@ -98,6 +101,13 @@ public class PostCriteria implements Serializable, Criteria {
         this.categoryId = categoryId;
     }
 
+    public StringFilter getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(StringFilter createdBy) {
+        this.createdBy = createdBy;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -114,6 +124,7 @@ public class PostCriteria implements Serializable, Criteria {
             Objects.equals(description, that.description) &&
             Objects.equals(location, that.location) &&
             Objects.equals(status, that.status) &&
+            Objects.equals(createdBy, that.createdBy) &&
             Objects.equals(categoryId, that.categoryId);
     }
 
@@ -125,6 +136,7 @@ public class PostCriteria implements Serializable, Criteria {
         description,
         location,
         status,
+        createdBy,
         categoryId
         );
     }
@@ -137,6 +149,7 @@ public class PostCriteria implements Serializable, Criteria {
                 (description != null ? "description=" + description + ", " : "") +
                 (location != null ? "location=" + location + ", " : "") +
                 (status != null ? "status=" + status + ", " : "") +
+                (createdBy != null ? "createdBy=" + createdBy + ", " : "") +
                 (categoryId != null ? "categoryId=" + categoryId + ", " : "") +
             "}";
     }

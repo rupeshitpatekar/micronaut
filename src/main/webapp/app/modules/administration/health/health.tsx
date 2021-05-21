@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Translate } from 'react-jhipster';
-import { Badge, Button, Col, Row, Table } from 'reactstrap';
+import { Table, Badge, Col, Row, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -34,28 +34,11 @@ export const HealthPage = (props: IHealthPageProps) => {
   const renderModal = () => <HealthModal healthObject={healthObject} handleClose={handleClose} showModal={showModal} />;
 
   const { health, isFetching } = props;
-  const data = health ?? {};
-
-  const nameMap = {
-    jdbc: 'db',
-  };
-
-  if (data.details) {
-    const mappedDetails = {};
-
-    Object.keys(data.details).forEach(key => {
-      const mappedKey = nameMap[key] ? nameMap[key] : key;
-      mappedDetails[mappedKey] = data.details[key];
-    });
-
-    data.details = mappedDetails;
-  }
+  const data = (health || {}).components || {};
 
   return (
     <div>
-      <h2 id="health-page-heading">
-        <Translate contentKey="health.title">Health Checks</Translate>
-      </h2>
+      <h2 id="health-page-heading">Health Checks</h2>
       <p>
         <Button onClick={getSystemHealth} color={isFetching ? 'btn btn-danger' : 'btn btn-primary'} disabled={isFetching}>
           <FontAwesomeIcon icon="sync" />
@@ -70,41 +53,29 @@ export const HealthPage = (props: IHealthPageProps) => {
           <Table bordered aria-describedby="health-page-heading">
             <thead>
               <tr>
-                <th>
-                  <Translate contentKey="health.table.service">Service Name</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="health.table.status">Status</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="health.details.details">Details</Translate>
-                </th>
+                <th>Service Name</th>
+                <th>Status</th>
+                <th>Details</th>
               </tr>
             </thead>
             <tbody>
-              {data.details
-                ? Object.keys(data.details).map((configPropKey, configPropIndex) => (
-                    <tr key={configPropIndex}>
-                      <td>
-                        <Translate contentKey={`health.indicator.${configPropKey}`}>{configPropKey}</Translate>
-                      </td>
-                      <td>
-                        <Badge
-                          color={data.details[configPropKey] ? (data.details[configPropKey].status !== 'UP' ? 'danger' : 'success') : null}
-                        >
-                          {data.status}
-                        </Badge>
-                      </td>
-                      <td>
-                        {data.details[configPropKey] ? (
-                          <a onClick={getSystemHealthInfo(configPropKey, data.details[configPropKey])}>
-                            <FontAwesomeIcon icon="eye" />
-                          </a>
-                        ) : null}
-                      </td>
-                    </tr>
-                  ))
-                : null}
+              {Object.keys(data).map((configPropKey, configPropIndex) =>
+                configPropKey !== 'status' ? (
+                  <tr key={configPropIndex}>
+                    <td>{configPropKey}</td>
+                    <td>
+                      <Badge color={data[configPropKey].status !== 'UP' ? 'danger' : 'success'}>{data[configPropKey].status}</Badge>
+                    </td>
+                    <td>
+                      {data[configPropKey].details ? (
+                        <a onClick={getSystemHealthInfo(configPropKey, data[configPropKey])}>
+                          <FontAwesomeIcon icon="eye" />
+                        </a>
+                      ) : null}
+                    </td>
+                  </tr>
+                ) : null
+              )}
             </tbody>
           </Table>
         </Col>

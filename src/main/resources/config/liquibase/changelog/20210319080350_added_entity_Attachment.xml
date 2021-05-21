@@ -6,12 +6,12 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    
+
     <!--
         Added the entity Attachment.
     -->
     <changeSet id="20210319080350-1" author="jhipster">
-        <createTable tableName="resource">
+        <createTable tableName="attachment">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -46,9 +46,9 @@
     -->
     <changeSet id="20210319080350-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/resource.csv"
+                  file="config/liquibase/fake-data/attachment.csv"
                   separator=";"
-                  tableName="resource">
+                  tableName="attachment">
             <column name="id" type="numeric"/>
             <column name="file_name" type="string"/>
             <column name="content" type="blob"/>

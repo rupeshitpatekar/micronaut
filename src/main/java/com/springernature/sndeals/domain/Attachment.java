@@ -11,7 +11,7 @@ import java.io.Serializable;
  * A Attachment.
  */
 @Entity
-@Table(name = "resource")
+@Table(name = "attachment")
 public class Attachment implements Serializable {
 
     private static final long serialVersionUID = 1L;

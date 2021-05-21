@@ -58,10 +58,16 @@ liquibase:
       change-log: classpath:config/liquibase/master.xml
       contexts: prod
 mail:
-  host: localhost
-  port: 25
-  # username:
-  # password:
+  host: smtp.gmail.com
+  port: 587
+  username: help.sndeals@gmail.com #Replace this field with your Gmail username.
+  password: sndeals@123 #Replace this field with your Gmail password/App password.
+  protocol: smtp
+  tls: true
+  properties.mail.smtp:
+    auth: true
+    starttls.enable: true
+    ssl.trust: smtp.gmail.com
 thymeleaf:
   cache: true
 

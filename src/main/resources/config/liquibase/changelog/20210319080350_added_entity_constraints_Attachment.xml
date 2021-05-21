@@ -7,9 +7,9 @@
         Added the constraints for entity Attachment.
     -->
     <changeSet id="20210319080350-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="post_id"
-                                 baseTableName="resource"
+                                 baseTableName="attachment"
                                  constraintName="fk_resource_post_id"
                                  referencedColumnNames="id"
                                  referencedTableName="post"/>

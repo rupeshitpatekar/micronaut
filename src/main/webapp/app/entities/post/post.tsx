@@ -135,6 +135,12 @@ export const Post = (props: IPostProps) => {
                     <td>{post.categoryDisplayName ? <Link to={`category/${post.categoryId}`}>{post.categoryDisplayName}</Link> : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
+                        <Button tag={Link} to={`/attachment/new/${post.id}`} color="info" size="sm">
+                          <FontAwesomeIcon icon="plus" />{' '}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.add_attachment">Add Attachment</Translate>
+                          </span>
+                        </Button>
                         <Button tag={Link} to={`${match.url}/${post.id}`} color="info" size="sm">
                           <FontAwesomeIcon icon="eye" />{' '}
                           <span className="d-none d-md-inline">

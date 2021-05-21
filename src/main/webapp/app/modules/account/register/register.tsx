@@ -7,6 +7,7 @@ import { Row, Col, Alert, Button } from 'reactstrap';
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
 import { IRootState } from 'app/shared/reducers';
 import { handleRegister, reset } from './register.reducer';
+import {validateEmailDomain} from "app/shared/util/email-domain-validation";
 
 export interface IRegisterProps extends StateProps, DispatchProps {}
 
@@ -61,7 +62,8 @@ export const RegisterPage = (props: IRegisterProps) => {
               validate={{
                 required: { value: true, errorMessage: translate('global.messages.validate.email.required') },
                 minLength: { value: 5, errorMessage: translate('global.messages.validate.email.minlength') },
-                maxLength: { value: 254, errorMessage: translate('global.messages.validate.email.maxlength') },
+                maxLength: { value : 254, errorMessage: translate('global.messages.validate.email.maxlength') },
+                custom: validateEmailDomain
               }}
             />
             <AvField

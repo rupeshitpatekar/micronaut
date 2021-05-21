@@ -1,5 +1,4 @@
 import React from 'react';
-import { Translate } from 'react-jhipster';
 import { Table, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 
 const formatDiskSpaceOutput = rawValue => {
@@ -16,20 +15,14 @@ const formatDiskSpaceOutput = rawValue => {
 const HealthModal = ({ handleClose, healthObject, showModal }) => {
   const data = healthObject.details || {};
   return (
-    <Modal isOpen={showModal} size="lg" modalTransition={{ timeout: 20 }} backdropTransition={{ timeout: 10 }} toggle={handleClose}>
-      <ModalHeader toggle={handleClose}>
-        <Translate contentKey={`health.indicator.${healthObject.name}`}>{healthObject.name}</Translate>
-      </ModalHeader>
+    <Modal isOpen={showModal} modalTransition={{ timeout: 20 }} backdropTransition={{ timeout: 10 }} toggle={handleClose}>
+      <ModalHeader toggle={handleClose}>{healthObject.name}</ModalHeader>
       <ModalBody>
         <Table bordered>
           <thead>
             <tr>
-              <th className="w-50">
-                <Translate contentKey="health.details.name">Name</Translate>
-              </th>
-              <th className="w-50">
-                <Translate contentKey="health.details.value">Value</Translate>
-              </th>
+              <th>Name</th>
+              <th>Value</th>
             </tr>
           </thead>
           <tbody>

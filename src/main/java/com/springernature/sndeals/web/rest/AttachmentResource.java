@@ -105,7 +105,7 @@ public class AttachmentResource {
      */
     @Get("/attachments")
     @ExecuteOn(TaskExecutors.IO)
-    public HttpResponse<List<AttachmentDTO>> getAllAttachments(HttpRequest request, AttachmentCriteria criteria, Pageable pageable) {
+    public HttpResponse<List<AttachmentDTO>> getAllAttachments(HttpRequest request, @Nullable AttachmentCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Attachments by criteria: {}", criteria);
         Page<AttachmentDTO> page = attachmentQueryService.findByCriteria(criteria, pageable);
         return HttpResponse.ok(page.getContent()).headers(headers ->

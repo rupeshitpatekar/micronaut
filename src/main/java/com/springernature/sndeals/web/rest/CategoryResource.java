@@ -105,7 +105,7 @@ public class CategoryResource {
      */
     @Get("/categories")
     @ExecuteOn(TaskExecutors.IO)
-    public HttpResponse<List<CategoryDTO>> getAllCategories(HttpRequest request, CategoryCriteria criteria, Pageable pageable) {
+    public HttpResponse<List<CategoryDTO>> getAllCategories(HttpRequest request, @Nullable CategoryCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Categories by criteria: {}", criteria);
         Page<CategoryDTO> page = categoryQueryService.findByCriteria(criteria, pageable);
         return HttpResponse.ok(page.getContent()).headers(headers ->
